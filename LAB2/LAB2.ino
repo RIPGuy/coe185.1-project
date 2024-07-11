@@ -37,9 +37,9 @@ void setup() {
   //Init counter1
   TCCR1A = 0;  //Normal mode 0xffff top, rolls over
 
-  TCCR1B |= (1 << CS12) | (1 << CS11);  //for checkOFF1 x1
+  // TCCR1B |= (1 << CS12) | (1 << CS11);  //for checkOFF1 x1
   // TCCR1B = (1 << CS12) | (1 << CS10); //checkOFF3 & checkOFF4 x1024
-  // TCCR1B = (1 << CS11) | (1 << CS10);  //checkOFF5 x64
+  TCCR1B = (1 << CS11) | (1 << CS10);  //checkOFF5 x64
 
   TCCR1C = 0;
   //Set counter to zero, high byte first
@@ -117,7 +117,6 @@ void checkOFF3() {
       // Logic to detect bounce here - adjust according to actual bounce detection mechanism
       if (regValue != 0) {  // if there is a debounce, indicate a bounce was detected
         buttonEndTime = ICR1;
-        Serial.println(buttonEndTime);
         Serial.print("Bounce time on press: ");
         Serial.println(buttonEndTime - buttonStartTime);
         bounceDetected = true;
@@ -197,11 +196,9 @@ void checkOFF5(){
       delay(10);
       buttonEndTime = millis();
 
-
       uint32_t bounceDuration = ICR1;  
       delay(10);
       uint16_t newbounceDuration = ICR1;
-
 
       if (newbounceDuration != bounceDuration) { // Bounce occurred, print the duration of the bounce
         Serial.println("Bounce detected");
@@ -221,10 +218,9 @@ void checkOFF5(){
 
 
 void loop() {
-  // checkOFF1();
+//  checkOFF1();
   // checkOFF2();
   // checkOFF3();
   // checkOFF4();
   checkOFF5();
-  //yawa si keane
 }
