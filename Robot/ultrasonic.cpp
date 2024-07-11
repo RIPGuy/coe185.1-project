@@ -5,9 +5,9 @@
 
 #define TRIGGER_PIN PB4 // PIN 12 trigger on sensor
 #define ECHO_PIN PB5     // PIN 13 echo on sensor
-
-#define RED_LED PB1 // PIN 5 
-#define GREEN_LED PB0 // PIN 6
+ 
+#define RED_LED PB1 // PIN 9
+#define GREEN_LED PB0 // PIN 8
 
 #define SERVO PB2 // PIN 10 
 
@@ -144,4 +144,31 @@ void proximityReadLed(int direction, double threshold){
   }
 
   return distance;
+}
+
+void suga (){
+  proximityReadLed(LEFT, MAX);
+  Serial.print("Left: " );
+  Serial.println(proximityRead(LEFT));
+  _delay_ms(500);
+   
+  proximityReadLed(RIGHT, MAX);
+  Serial.print("Right: " );
+  Serial.println( proximityRead(RIGHT));
+  _delay_ms(500);
+     
+  proximityReadLed(CENTER, MAX);
+  Serial.print("Center: " );
+  Serial.println(proximityRead(CENTER));
+  _delay_ms(500); 
+
+}
+
+void center(){
+  proximityReadLed(CENTER, MAX);
+  Serial.print("Center: " );
+  Serial.print(proximityRead(CENTER));
+  Serial.println(" inches");
+  _delay_ms(3000);
+
 }

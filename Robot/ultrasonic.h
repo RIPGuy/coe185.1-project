@@ -2,7 +2,7 @@
 #define ULTRASONIC_SENSOR_H
 
 //this is the turn of the servo for 64 prescaler
-#define RIGHT 125 //90
+#define RIGHT 125 //90 
 #define LEFT 625 //-90
 #define CENTER 375 //0
 
@@ -17,5 +17,7 @@ void ledOff(char led);
 void setupLed();
 void proximityReadLed(int direction, double threshold);
 double proximityRead(int direction);
+void suga();
+void center();
 
 #endif

@@ -3,7 +3,7 @@
 
 #define FORWARD 1
 #define BACKWARD -1
-#define MOTOR_TOP_SPEED 200
+#define MOTOR_TOP_SPEED 180
 
 // Disable both motors because you don't often disable just one
 void disableMotors();
